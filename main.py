@@ -47,7 +47,6 @@ def monitor_messages():
                 if author and ("BRANDO" in author.upper() or "SHOOF" in author.upper()):
                     if "BOUGHT" in content or "SOLD" in content:
                         if content not in alerted_messages:
-                            client.messages.create(
                                 body = f"{author} ALERT:  {message_content}"
                                 message = client.messages.create(
                                 body=body,
