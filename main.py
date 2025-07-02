@@ -25,14 +25,6 @@ options.add_argument('--no-sandbox')
 
 driver = webdriver.Chrome(options=options)
 
-def login_discord():
-    driver.get("https://discord.com/login")
-    time.sleep(3)
-    driver.find_element(By.NAME, "email").send_keys(DISCORD_EMAIL)
-    driver.find_element(By.NAME, "password").send_keys(DISCORD_PASSWORD)
-    driver.find_element(By.TAG_NAME, "button").click()
-    time.sleep(8)
-
 def monitor_messages():
     alerted_messages = set()
     while True:
@@ -47,13 +39,17 @@ def monitor_messages():
                 if author and ("BRANDO" in author.upper() or "SHOOF" in author.upper()):
                     if "BOUGHT" in content or "SOLD" in content:
                         if content not in alerted_messages:
-                                body = f"{author} ALERT:  {message_content}"
-                                message = client.messages.create(
+                            body = f"{author} ALERT: {content}"
+                            message = client.messages.create(
                                 body=body,
                                 from_=TWILIO_FROM,
                                 to=TWILIO_TO
                             )
                             alerted_messages.add(content)
+            time.sleep(15)
+        except Exception as e:
+            print("Error:", e)
+
             time.sleep(15)
         except Exception as e:
             print("Error:", e)
