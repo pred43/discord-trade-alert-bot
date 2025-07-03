@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DISCORD_EMAIL = os.getenv("DISCORD_EMAIL")
-DISCORD_PASSWORD = os.getenv("DISCORD_PASSWORD")
+DISCORD_EMAIL = chrispappas43@gmail.com
+DISCORD_PASSWORD = Sophia43
 TWILIO_SID = os.getenv("TWILIO_SID")
 TWILIO_AUTH = os.getenv("TWILIO_AUTH")
 TWILIO_FROM = os.getenv("TWILIO_FROM")
